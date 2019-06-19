@@ -1,26 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import DragablesList from './dragables/DragablesList'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
+class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      x: 0,
+      y: 0,
+    }
+  }
+
+  _onMouseMove(e) {
+    this.setState({ x: e.pageX, y: e.pageY });
+  }
+
+  render() {
+    return (
+      <div className="App" onMouseMove={this._onMouseMove.bind(this)}>
+        <DragablesList />
+        <DragablesList />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          y: {this.state.y}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+        
+        <p>
+          x: {this.state.x} 
+        </p>
+      </div>
+    );
+  }
 }
 
 export default App;

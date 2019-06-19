@@ -1,0 +1,8 @@
+.drag-list {
+  padding: 10px;
+  margin: 10px;
+  background: red;
+  border: 1px black solid;
+  display: flex;
+}
+
